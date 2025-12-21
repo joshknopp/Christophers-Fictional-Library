@@ -5,6 +5,7 @@
     "title": "Charlie's Day",
     "cover": "assets/books/charlies-day/CharliesDay-1.jpg",
     "pages": [
+      "assets/books/charlies-day/CharliesDay-1.jpg",
       "assets/books/charlies-day/CharliesDay-2.jpg",
       "assets/books/charlies-day/CharliesDay-3.jpg",
       "assets/books/charlies-day/CharliesDay-4.jpg",
@@ -19,6 +20,7 @@
     "title": "The Caught Reindeer",
     "cover": "assets/books/the-caught-reindeer/TheCaughtReindeer-01.jpg",
     "pages": [
+      "assets/books/the-caught-reindeer/TheCaughtReindeer-01.jpg",
       "assets/books/the-caught-reindeer/TheCaughtReindeer-02.jpg",
       "assets/books/the-caught-reindeer/TheCaughtReindeer-03.jpg",
       "assets/books/the-caught-reindeer/TheCaughtReindeer-04.jpg",
