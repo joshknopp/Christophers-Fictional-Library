@@ -10,7 +10,7 @@ let currentPageIndex = 0;
  */
 async function fetchBooks() {
   try {
-    const response = await fetch('/books.json');
+    const response = await fetch('books.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
