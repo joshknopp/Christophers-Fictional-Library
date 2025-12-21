@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christopher’s Fictional Library</title>
+  </head>
+  <body>
+    <header>
+      <h1>Christopher’s Fictional Library</h1>
+    </header>
+    <main id="app" class="bookshelf"></main>
+
+    <div id="reader-view" class="reader-view-overlay" style="display: none;">
+      <button id="close-reader" class="reader-view-close">&times;</button>
+      <div class="reader-view-content">
+        <button id="prev-page" class="reader-view-nav prev">&lsaquo;</button>
+        <div id="reader-view-pages"></div>
+        <button id="next-page" class="reader-view-nav next">&rsaquo;</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
