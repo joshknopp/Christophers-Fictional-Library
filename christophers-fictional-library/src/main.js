@@ -49,7 +49,9 @@ function showPage(index) {
   const pagesWrapper = document.querySelector('.pages-wrapper');
   if (!pagesWrapper) return;
 
-  const offset = -index * 100;
+  // The offset needs to be a percentage of the *wrapper's* total width.
+  // Since the wrapper contains all pages, we divide the index by the total number of pages.
+  const offset = (-index / currentBook.pages.length) * 100;
   pagesWrapper.style.transform = `translateX(${offset}%)`;
   currentPageIndex = index;
 }
@@ -61,6 +63,9 @@ function openReader(bookId) {
   currentBook = books.find(b => b.id === bookId);
   if (!currentBook) return;
 
+  // Hide the main app content
+  document.getElementById('app').style.display = 'none';
+
   const pagesContainer = document.getElementById('reader-view-pages');
   // Clear previous content safely
   while (pagesContainer.firstChild) {
@@ -71,21 +76,20 @@ function openReader(bookId) {
   pagesWrapper.className = 'pages-wrapper';
   pagesWrapper.style.width = `${currentBook.pages.length * 100}%`;
 
+  const num_pages = currentBook.pages.length;
   currentBook.pages.forEach(pageSrc => {
     const pageElement = document.createElement('div');
     pageElement.className = 'reader-page';
+    pageElement.style.width = `${100 / num_pages}%`; // Set width for each page
 
     const imgElement = document.createElement('img');
     imgElement.src = pageSrc;
     imgElement.alt = `Page from ${currentBook.title}`;
-    imgElement.loading = 'lazy';
-
     pageElement.appendChild(imgElement);
     pagesWrapper.appendChild(pageElement);
   });
 
   pagesContainer.appendChild(pagesWrapper);
-
   document.getElementById('reader-view').style.display = 'flex';
   showPage(0);
 }
@@ -95,6 +99,8 @@ function openReader(bookId) {
  */
 function closeReader() {
   document.getElementById('reader-view').style.display = 'none';
+  // Show the main app content
+  document.getElementById('app').style.display = 'grid';
   currentBook = null;
 }
 
