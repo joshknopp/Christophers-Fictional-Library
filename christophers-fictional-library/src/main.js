@@ -10,11 +10,17 @@ let currentPageIndex = 0;
  */
 async function fetchBooks() {
   try {
-    const response = await fetch('books.json');
+    const response = await fetch(`${import.meta.env.BASE_URL}books.json`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    books = await response.json();
+    const fetchedBooks = await response.json();
+    // Prepend the base URL to all book asset paths
+    books = fetchedBooks.map(book => ({
+      ...book,
+      cover: `${import.meta.env.BASE_URL}${book.cover}`,
+      pages: book.pages.map(page => `${import.meta.env.BASE_URL}${page}`),
+    }));
   } catch (error) {
     console.error("Could not fetch books:", error);
   }
@@ -56,15 +62,29 @@ function openReader(bookId) {
   if (!currentBook) return;
 
   const pagesContainer = document.getElementById('reader-view-pages');
-  pagesContainer.innerHTML = `
-    <div class="pages-wrapper" style="width: ${currentBook.pages.length * 100}%">
-      ${currentBook.pages.map(pageSrc => `
-        <div class="reader-page">
-          <img src="${pageSrc}" alt="Page from ${currentBook.title}" loading="lazy">
-        </div>
-      `).join('')}
-    </div>
-  `;
+  // Clear previous content safely
+  while (pagesContainer.firstChild) {
+    pagesContainer.removeChild(pagesContainer.firstChild);
+  }
+
+  const pagesWrapper = document.createElement('div');
+  pagesWrapper.className = 'pages-wrapper';
+  pagesWrapper.style.width = `${currentBook.pages.length * 100}%`;
+
+  currentBook.pages.forEach(pageSrc => {
+    const pageElement = document.createElement('div');
+    pageElement.className = 'reader-page';
+
+    const imgElement = document.createElement('img');
+    imgElement.src = pageSrc;
+    imgElement.alt = `Page from ${currentBook.title}`;
+    imgElement.loading = 'lazy';
+
+    pageElement.appendChild(imgElement);
+    pagesWrapper.appendChild(pageElement);
+  });
+
+  pagesContainer.appendChild(pagesWrapper);
 
   document.getElementById('reader-view').style.display = 'flex';
   showPage(0);
