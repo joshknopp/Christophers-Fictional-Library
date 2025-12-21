@@ -46,15 +46,26 @@ function renderBookshelf() {
  * Shows a specific page in the reader view.
  */
 function showPage(index) {
-  const pagesWrapper = document.querySelector('.pages-wrapper');
-  if (!pagesWrapper) return;
+  const pagesContainer = document.getElementById('reader-view-pages');
+  if (!pagesContainer || !currentBook || !currentBook.pages[index]) return;
 
-  // The offset needs to be a percentage of the *wrapper's* total width.
-  // Since the wrapper contains all pages, we divide the index by the total number of pages.
-  const offset = (-index / currentBook.pages.length) * 100;
-  pagesWrapper.style.transform = `translateX(${offset}%)`;
+  // Clear previous content safely
+  while (pagesContainer.firstChild) {
+    pagesContainer.removeChild(pagesContainer.firstChild);
+  }
+
+  const pageSrc = currentBook.pages[index];
+  const pageElement = document.createElement('div');
+  pageElement.className = 'reader-page';
+  const imgElement = document.createElement('img');
+  imgElement.src = pageSrc;
+  imgElement.alt = `Page ${index + 1} of ${currentBook.title}`;
+  pageElement.appendChild(imgElement);
+  pagesContainer.appendChild(pageElement);
+
   currentPageIndex = index;
 }
+
 
 /**
  * Opens the reader view for a specific book.
@@ -63,34 +74,10 @@ function openReader(bookId) {
   currentBook = books.find(b => b.id === bookId);
   if (!currentBook) return;
 
-  // Hide the main app content
+  // Hide the main app content and show the reader
   document.getElementById('app').style.display = 'none';
-
-  const pagesContainer = document.getElementById('reader-view-pages');
-  // Clear previous content safely
-  while (pagesContainer.firstChild) {
-    pagesContainer.removeChild(pagesContainer.firstChild);
-  }
-
-  const pagesWrapper = document.createElement('div');
-  pagesWrapper.className = 'pages-wrapper';
-  pagesWrapper.style.width = `${currentBook.pages.length * 100}%`;
-
-  const num_pages = currentBook.pages.length;
-  currentBook.pages.forEach(pageSrc => {
-    const pageElement = document.createElement('div');
-    pageElement.className = 'reader-page';
-    pageElement.style.width = `${100 / num_pages}%`; // Set width for each page
-
-    const imgElement = document.createElement('img');
-    imgElement.src = pageSrc;
-    imgElement.alt = `Page from ${currentBook.title}`;
-    pageElement.appendChild(imgElement);
-    pagesWrapper.appendChild(pageElement);
-  });
-
-  pagesContainer.appendChild(pagesWrapper);
   document.getElementById('reader-view').style.display = 'flex';
+
   showPage(0);
 }
 
