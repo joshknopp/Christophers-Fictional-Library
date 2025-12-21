@@ -1,24 +1,36 @@
 
 [
   {
-    "id": "book-1",
-    "title": "The Adventures of Captain Blueheart",
-    "cover": "/assets/books/book-1/cover.jpg",
+    "id": "charlies-day",
+    "title": "Charlie's Day",
+    "cover": "/assets/books/charlies-day/CharliesDay-1.jpg",
     "pages": [
-      "/assets/books/book-1/page-1.jpg",
-      "/assets/books/book-1/page-2.jpg",
-      "/assets/books/book-1/page-3.jpg"
+      "/assets/books/charlies-day/CharliesDay-2.jpg",
+      "/assets/books/charlies-day/CharliesDay-3.jpg",
+      "/assets/books/charlies-day/CharliesDay-4.jpg",
+      "/assets/books/charlies-day/CharliesDay-5.jpg",
+      "/assets/books/charlies-day/CharliesDay-6.jpg",
+      "/assets/books/charlies-day/CharliesDay-7.jpg",
+      "/assets/books/charlies-day/CharliesDay-8.jpg"
     ]
   },
   {
-    "id": "book-2",
-    "title": "The Mystery of the Missing Moonrock",
-    "cover": "/assets/books/book-2/cover.jpg",
+    "id": "the-caught-reindeer",
+    "title": "The Caught Reindeer",
+    "cover": "/assets/books/the-caught-reindeer/TheCaughtReindeer-01.jpg",
     "pages": [
-      "/assets/books/book-2/page-1.jpg",
-      "/assets/books/book-2/page-2.jpg",
-      "/assets/books/book-2/page-3.jpg",
-      "/assets/books/book-2/page-4.jpg"
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-02.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-03.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-04.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-05.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-06.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-07.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-08.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-09.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-10.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-11.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-12.jpg",
+      "/assets/books/the-caught-reindeer/TheCaughtReindeer-13.jpg"
     ]
   }
 ]
