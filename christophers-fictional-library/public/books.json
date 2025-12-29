@@ -34,5 +34,16 @@
       "assets/books/the-caught-reindeer/TheCaughtReindeer-12.jpg",
       "assets/books/the-caught-reindeer/TheCaughtReindeer-13.jpg"
     ]
+  },
+  {
+    "id": "invertigo",
+    "title": "Invertigo",
+    "cover": "assets/books/invertigo/invertigo-1.jpg",
+    "pages": [
+      "assets/books/invertigo/invertigo-1.jpg",
+      "assets/books/invertigo/invertigo-2.jpg",
+      "assets/books/invertigo/invertigo-3.jpg",
+      "assets/books/invertigo/invertigo-4.jpg"
+    ]
   }
 ]
